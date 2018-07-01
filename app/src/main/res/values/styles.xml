@@ -9,7 +9,7 @@
     </style>
 
     <style name="Text_Score_Time">
-        <item name="android:textSize">50sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:layout_marginBottom">20dp</item>
     </style>
@@ -32,6 +32,10 @@
 
     <style name="Hole_image_right" parent="Hole_image">
         <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+    <style name="saru_image_center" parent="Hole_image_left">
+        <item name="android:src">@drawable/ic_saru_mono</item>
     </style>
 
 </resources>
