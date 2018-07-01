@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Text_Score_Time">
+        <item name="android:textSize">50sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
+
+    <style name="Hole_image">
+        <item name="android:src">@drawable/ic_doron</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
+    <style name="Hole_image_left" parent="Hole_image">
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+    <style name="Hole_image_center" parent="Hole_image">
+
+    </style>
+
+    <style name="Hole_image_right" parent="Hole_image">
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+</resources>
