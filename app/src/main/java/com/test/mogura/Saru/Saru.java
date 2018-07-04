@@ -15,7 +15,7 @@ import com.test.mogura.R;
 
 public class Saru extends Mogura {
     private final int score = 10;
-    private final int duration = 1000;
+    private final int duration = 130;
     private Drawable image;
     private ImageView imageView;
     private Animation anim;
@@ -54,39 +54,7 @@ public class Saru extends Mogura {
         });
 
 
-//        anim = AnimationUtils.loadAnimation(context, R.anim.up_down_anim);
-//        anim.setRepeatMode(Animation.REVERSE);
-//        anim.setRepeatCount(1);
-//        anim.setDuration(500);
-//        AnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationEnd(final Animation animation) {
-////                removeImage(imageView);
-//                imageView.setVisibility(View.GONE);
-//                MyUtils.showToast(context, "end");
-//            }
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//                try {
-//                    anim.wait(500);
-//                    MyUtils.showToast(context, "re");
-//                }catch (Exception e){
-//                    Log.e("", "onAnimationRepeat: ", e);
-//                }
-//            }
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//                MyUtils.showToast(context, "start");
-//            }
-//        });
-//
-//        imageView.startAnimation(anim);
-
     }
-
-//    private Animator moguraAnimator(View tar){
-//
-//    }
 
     @Override
     protected void setImage(Drawable image) {
