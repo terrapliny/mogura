@@ -1,9 +1,8 @@
 package com.test.mogura;
 
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -15,29 +14,38 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
-    int period;
+//    int period;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        final Handler handler = new Handler();
-        final ImageView saru = findViewById(R.id.mogura_5);
-
-        period = 1000;
+        final ImageView saru[] = {
+                findViewById(R.id.mogura_4), 
+                findViewById(R.id.mogura_5),
+                findViewById(R.id.mogura_6)
+        };
+        final int stageTime = 30000;
+        final int interval = 1000;
+        final int totalSaru = 3;
+        
+//        period = 1000;
         final Random rand = new Random();
 
+        for (ImageView iv:saru) {
+            iv.setVisibility(View.GONE);
+        }
 
-        saru.setVisibility(View.GONE);
-        new CountDownTimer(30000, 3000) {
+        new CountDownTimer(stageTime, interval) {
 
             public void onTick(long millisUntilFinished) {
-//                saru.setImageDrawable(null);
-                period = (int) rand.nextInt(3000) ;
+                int period = (int) rand.nextInt(2000) ;
+
                 new CountDownTimer(period, period) {
                     public void onTick(long millisUntilFinished) { }
                     public void onFinish() {
-                        if(saru.getVisibility() == View.GONE)
-                            startNewSaru(saru);
+                        int pos = (int) rand.nextInt(totalSaru) ;
+                        if(saru[pos].getVisibility() == View.GONE)
+                            startNewSaru(saru[pos]);
                     }
                 }.start() ;
             }
