@@ -47,23 +47,80 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/hole_1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            style="@style/Hole_image_left"/>
+        <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/hole_2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            style="@style/Hole_image_center"/>
+            <ImageView
+                android:id="@+id/mogura_1"
+                style="@style/saru_image_center"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
 
-        <ImageView
-            android:id="@+id/hole_3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            style="@style/Hole_image_right"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="80dp"
+                android:background="#F8F8F8" />
+            <ImageView
+                android:id="@+id/hole_1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_doron_lite"
+                style="@style/Hole_image_center"/>
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mogura_2"
+                style="@style/saru_image_center"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="80dp"
+                android:background="#F8F8F8" />
+            <ImageView
+                android:id="@+id/hole_2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_doron_lite"
+                style="@style/Hole_image_center"/>
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mogura_3"
+                style="@style/saru_image_center"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="80dp"
+                android:background="#F8F8F8" />
+            <ImageView
+                android:id="@+id/hole_3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_doron_lite"
+                style="@style/Hole_image_center"/>
+
+
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -163,23 +220,80 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/hole_7"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            style="@style/Hole_image_left"/>
+        <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/hole_8"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            style="@style/Hole_image_center"/>
+            <ImageView
+                android:id="@+id/mogura_7"
+                style="@style/saru_image_center"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
 
-        <ImageView
-            android:id="@+id/hole_9"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            style="@style/Hole_image_right"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="80dp"
+                android:background="#F8F8F8" />
+            <ImageView
+                android:id="@+id/hole_7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_doron_lite"
+                style="@style/Hole_image_center"/>
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mogura_8"
+                style="@style/saru_image_center"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="80dp"
+                android:background="#F8F8F8" />
+            <ImageView
+                android:id="@+id/hole_8"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_doron_lite"
+                style="@style/Hole_image_center"/>
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mogura_9"
+                style="@style/saru_image_center"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="80dp"
+                android:background="#F8F8F8" />
+            <ImageView
+                android:id="@+id/hole_9"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_doron_lite"
+                style="@style/Hole_image_center"/>
+
+
+        </FrameLayout>
     </LinearLayout>
 
 </LinearLayout>

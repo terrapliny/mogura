@@ -14,19 +14,26 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
-//    int period;
+    final int stageTime = 30000;
+    final int intervalTime = 1000;
+    final int randomIntervalTime = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         final ImageView saru[] = {
-                findViewById(R.id.mogura_4), 
+                findViewById(R.id.mogura_1),
+                findViewById(R.id.mogura_2),
+                findViewById(R.id.mogura_3),
+                findViewById(R.id.mogura_4),
                 findViewById(R.id.mogura_5),
-                findViewById(R.id.mogura_6)
+                findViewById(R.id.mogura_6),
+                findViewById(R.id.mogura_7),
+                findViewById(R.id.mogura_8),
+                findViewById(R.id.mogura_9)
         };
-        final int stageTime = 30000;
-        final int interval = 1000;
-        final int totalSaru = 3;
+
         
 //        period = 1000;
         final Random rand = new Random();
@@ -35,17 +42,23 @@ public class GameActivity extends AppCompatActivity {
             iv.setVisibility(View.GONE);
         }
 
-        new CountDownTimer(stageTime, interval) {
+        new CountDownTimer(stageTime, intervalTime) {
 
             public void onTick(long millisUntilFinished) {
-                int period = (int) rand.nextInt(2000) ;
+                int period = (int) rand.nextInt(randomIntervalTime) ;
 
                 new CountDownTimer(period, period) {
                     public void onTick(long millisUntilFinished) { }
                     public void onFinish() {
-                        int pos = (int) rand.nextInt(totalSaru) ;
-                        if(saru[pos].getVisibility() == View.GONE)
-                            startNewSaru(saru[pos]);
+                        int pos = (int) rand.nextInt(saru.length) ;
+                        while(true){
+                            if(saru[pos].getVisibility() == View.GONE) {
+                                startNewSaru(saru[pos]);
+                                break;
+                            }else{
+                                pos = (int) rand.nextInt(saru.length) ;
+                            }
+                        }
                     }
                 }.start() ;
             }
