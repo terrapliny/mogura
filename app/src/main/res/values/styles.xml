@@ -14,12 +14,22 @@
         <item name="android:layout_marginBottom">20dp</item>
     </style>
 
+    <style name="concealer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">43dp</item>
+        <item name="android:layout_marginTop">80dp</item>
+        <item name="android:background">#F8F8F8</item>
+    </style>
 
     <style name="Hole_image">
-        <item name="android:src">@drawable/ic_doron</item>
+        <item name="android:src">@drawable/ic_doron_lite</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:contentDescription">"hole"</item>
+
     </style>
 
     <style name="Hole_image_left" parent="Hole_image">
@@ -34,8 +44,10 @@
         <item name="android:layout_marginRight">20dp</item>
     </style>
 
-    <style name="saru_image_center" parent="Hole_image_left">
+    <style name="saru_image_center" parent="Hole_image_center">
         <item name="android:src">@drawable/ic_saru_mono</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:contentDescription">"mogura"</item>
     </style>
 
 </resources>
