@@ -1,6 +1,6 @@
 package com.test.mogura.MoguraFrame;
 
-import android.content.Context;
+import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -21,7 +21,7 @@ public abstract class Mogura {
     public void removeImage(ImageView imageView){
         imageView.setImageDrawable(null);
     };
-    public abstract void startMogura(Context context, ImageView imageView);
+    public abstract void startMogura(Activity activity, ImageView imageView);
 
     protected abstract void suplyScore();
 

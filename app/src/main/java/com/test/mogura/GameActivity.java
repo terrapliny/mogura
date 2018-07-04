@@ -1,8 +1,6 @@
 package com.test.mogura;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -13,16 +11,15 @@ import com.test.mogura.MoguraFrame.Factory;
 import com.test.mogura.MoguraFrame.Mogura;
 import com.test.mogura.Saru.SaruFactory;
 
-import java.util.HashMap;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
     final int stageTime = 30000;
-    final int intervalTime = 1000;
-    final int randomIntervalTime = 2000;
+    final int intervalTime = 250;
+    final int randomIntervalTime = 1500;
+    final Activity gameActivity = this;
 
-    private HashMap<Integer, Integer> hashmap = new HashMap<Integer, Integer>(){};
 
 
 
@@ -42,15 +39,7 @@ public class GameActivity extends AppCompatActivity {
                 findViewById(R.id.mogura_9)
         };
 
-        hashmap.put(R.id.mogura_1, R.id.explode_1);
-        hashmap.put(R.id.mogura_2, R.id.explode_2);
-        hashmap.put(R.id.mogura_3, R.id.explode_3);
-        hashmap.put(R.id.mogura_4, R.id.explode_4);
-        hashmap.put(R.id.mogura_5, R.id.explode_5);
-        hashmap.put(R.id.mogura_6, R.id.explode_6);
-        hashmap.put(R.id.mogura_7, R.id.explode_7);
-        hashmap.put(R.id.mogura_8, R.id.explode_8);
-        hashmap.put(R.id.mogura_9, R.id.explode_9);
+
 
 //        period = 1000;
         final Random rand = new Random();
@@ -62,7 +51,8 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(stageTime, intervalTime) {
 
             public void onTick(long millisUntilFinished) {
-                int period = (int) rand.nextInt(randomIntervalTime) ;
+                int period = (int) rand.nextInt((int)millisUntilFinished/10) ;
+                MyUtils.setTime(gameActivity, millisUntilFinished/1000);
 
                 new CountDownTimer(period, period) {
                     public void onTick(long millisUntilFinished) { }
@@ -91,32 +81,12 @@ public class GameActivity extends AppCompatActivity {
         mogura.startMogura(this, iv);
     }
 
-    public void onExplode(View v){
-        v.setVisibility(View.GONE);
-        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,
-                R.animator.explode_anim);
-        final ImageView iv = findViewById(hashmap.get(v.getId()));
-        iv.setVisibility(View.VISIBLE);
-        set.setTarget(iv);
-        set.start();
-        set.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator anim){}
-            @Override
-            public void onAnimationEnd(Animator anim){
-                iv.setVisibility(View.GONE);
-            }
-            @Override
-            public void onAnimationCancel(Animator anim){}
-            @Override
-            public void onAnimationRepeat(Animator anim){}
 
-        });
-    }
 
     @Override
     public void onBackPressed() {
-
+        MyUtils.clearScore();
+        super.onBackPressed();
     }
 
 }
