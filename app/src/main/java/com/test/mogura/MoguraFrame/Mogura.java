@@ -1,33 +1,30 @@
 package com.test.mogura.MoguraFrame;
 
+import android.animation.AnimatorSet;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 
 public abstract class Mogura {
-    private int score;
-    private int speed;
-    private int duration;
-    private Drawable image;
-    private ImageView imageView;
+    protected int score;
+    protected int duration;
+    protected int IdDrawable;
+    protected int IdAnimator;
+    protected ImageView imageView;
 
     public void stickImage(ImageView iv, Drawable d){
-        image = d;
+        Drawable image = d;
         imageView = iv;
         imageView.setImageDrawable(image);
     };
 
-    public void removeImage(ImageView imageView){
-        imageView.setImageDrawable(null);
-    };
+
+    protected abstract void setAnimator(Context context);
+
+    protected abstract void setOnclick(final Activity activity);
+
     public abstract void startMogura(Activity activity, ImageView imageView);
 
-    protected abstract void suplyScore();
-
-    protected abstract void setImage(Drawable image);
-
-    protected abstract void setImageView(ImageView imageView);
-
-    protected abstract void setAnim(Animation animation);
+    protected abstract AnimatorSet setAnimatorSet(Context context);
 }

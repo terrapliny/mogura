@@ -8,8 +8,8 @@ import android.widget.Toast;
 import java.util.HashMap;
 
 public class MyUtils {
-    private static Toast toast;
-    private static int totalScore = 0;
+    protected static Toast toast;
+    protected static int totalScore = 0;
     public static HashMap<Integer, Integer> idMap = new HashMap<Integer, Integer>(){
         {
             put(R.id.mogura_1, R.id.explode_1);

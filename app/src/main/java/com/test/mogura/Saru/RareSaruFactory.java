@@ -6,16 +6,14 @@ import com.test.mogura.MoguraFrame.Factory;
 import com.test.mogura.MoguraFrame.Mogura;
 import com.test.mogura.MoguraParam;
 
-public class SaruFactory extends Factory {
-
+public class RareSaruFactory extends Factory {
     protected Mogura createMogura(ImageView imageView){
         return new Saru(
-                MoguraParam.saruScore,
-                MoguraParam.saruDuration,
-                MoguraParam.saruIdDrawable,
-                MoguraParam.saruIdAnimator,
+                MoguraParam.rareSaruScore,
+                MoguraParam.rareSaruDuration,
+                MoguraParam.rareSaruIdDrawable,
+                MoguraParam.rareSaruIdAnimator,
                 imageView
         );
     }
-
 }

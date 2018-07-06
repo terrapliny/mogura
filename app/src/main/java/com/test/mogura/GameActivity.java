@@ -9,15 +9,18 @@ import android.widget.ImageView;
 
 import com.test.mogura.MoguraFrame.Factory;
 import com.test.mogura.MoguraFrame.Mogura;
+import com.test.mogura.Saru.RareSaruFactory;
 import com.test.mogura.Saru.SaruFactory;
+import com.test.mogura.Usagi.UsagiFactory;
 
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
-    final int stageTime = 30000;
+    final int stageTime = 31000;
     final int intervalTime = 250;
     final int randomIntervalTime = 1500;
+    final int rareProbability = 7;
     final Activity gameActivity = this;
 
 
@@ -51,19 +54,25 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(stageTime, intervalTime) {
 
             public void onTick(long millisUntilFinished) {
-                int period = (int) rand.nextInt((int)millisUntilFinished/10) ;
+                final int period = (int) rand.nextInt((int)millisUntilFinished/10) ;
                 MyUtils.setTime(gameActivity, millisUntilFinished/1000);
 
                 new CountDownTimer(period, period) {
                     public void onTick(long millisUntilFinished) { }
                     public void onFinish() {
                         int pos = (int) rand.nextInt(saru.length) ;
+                        int loopCnt = 0;
                         while(true){
                             if(saru[pos].getVisibility() == View.GONE) {
-                                startNewSaru(saru[pos]);
+                                if(period%rareProbability == 0) startNewUsagi(saru[pos]);
+                                else if(period%rareProbability == 1) startNewRareSaru(saru[pos]);
+                                else startNewSaru(saru[pos]);
                                 break;
                             }else{
                                 pos = (int) rand.nextInt(saru.length) ;
+                                //whileから必ず抜けれるように
+                                if(loopCnt >= 15) break;
+                                loopCnt++;
                             }
                         }
                     }
@@ -77,10 +86,21 @@ public class GameActivity extends AppCompatActivity {
 
     public void startNewSaru(ImageView iv){
         Factory saruFactory = new SaruFactory();
-        Mogura mogura = saruFactory.create();
+        Mogura mogura = saruFactory.create(iv);
         mogura.startMogura(this, iv);
     }
 
+    public void startNewRareSaru(ImageView iv){
+        Factory rareSaruFactory = new RareSaruFactory();
+        Mogura mogura = rareSaruFactory .create(iv);
+        mogura.startMogura(this, iv);
+    }
+
+    public void startNewUsagi(ImageView iv){
+        Factory usagiFactory = new UsagiFactory();
+        Mogura mogura = usagiFactory.create(iv);
+        mogura.startMogura(this, iv);
+    }
 
 
     @Override
