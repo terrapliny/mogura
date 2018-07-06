@@ -2,6 +2,7 @@ package com.test.mogura;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,5 +54,15 @@ public class MyUtils {
     public static void setTime(Activity activity, long time){
         TextView tv = activity.findViewById(R.id.time);
         tv.setText(String.valueOf(time) + "s");
+    }
+
+    public static void setFont(Context context, TextView v, int fontId){
+        Typeface font = null;
+        try {
+            font = Typeface.createFromAsset(context.getAssets(), "fonts/"+context.getString(fontId));
+            v.setTypeface(font);
+        }catch (Exception e){
+            MyUtils.showToast(context, "Fontfile couldn't be found.");
+        }
     }
 }
