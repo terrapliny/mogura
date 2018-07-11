@@ -3,6 +3,9 @@ package com.test.mogura;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,5 +67,11 @@ public class MyUtils {
         }catch (Exception e){
             MyUtils.showToast(context, "Fontfile couldn't be found.");
         }
+    }
+
+    public static void addView(FrameLayout layout, View v){
+        FrameLayout.LayoutParams lp1 = new FrameLayout.LayoutParams(-2, -2);
+        lp1.gravity = Gravity.CENTER;
+        layout.addView(v, layout.getChildCount(), lp1);
     }
 }

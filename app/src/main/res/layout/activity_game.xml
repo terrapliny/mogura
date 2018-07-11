@@ -43,6 +43,7 @@
 
 
     <LinearLayout
+        android:id="@+id/a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -129,6 +130,7 @@
         android:orientation="horizontal">
 
         <FrameLayout
+            android:id="@+id/b"
             android:layout_width="120dp"
             android:layout_height="match_parent">
 
@@ -154,9 +156,14 @@
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/c"
             android:layout_width="120dp"
             android:layout_height="match_parent">
 
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
             <ImageView
                 android:id="@+id/mogura_5"
                 style="@style/saru_image_center" />

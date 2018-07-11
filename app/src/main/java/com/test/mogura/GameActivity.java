@@ -41,8 +41,10 @@ public class GameActivity extends AppCompatActivity {
                 findViewById(R.id.mogura_8),
                 findViewById(R.id.mogura_9)
         };
-
-
+//        FrameLayout frameLayout1 = findViewById(R.id.b);
+//
+//        View V1 = this.getLayoutInflater().inflate(R.layout.treasure, null);
+//        MyUtils.addView(frameLayout1,V1);
 
 //        period = 1000;
         final Random rand = new Random();
@@ -54,7 +56,9 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(stageTime, intervalTime) {
 
             public void onTick(long millisUntilFinished) {
-                final int period = (int) rand.nextInt((int)millisUntilFinished/10) ;
+                int bound = (int) millisUntilFinished/10;
+                if (bound <0) bound = -bound;  //bound はpositiveでないといけない。
+                final int period = (int) rand.nextInt(bound);
                 MyUtils.setTime(gameActivity, millisUntilFinished/1000);
 
                 new CountDownTimer(period, period) {

@@ -20,7 +20,7 @@ public abstract class Mogura {
     };
 
 
-    protected abstract void setAnimator(Context context);
+    protected abstract void setAnimator(final Activity activity);
 
     protected abstract void setOnclick(final Activity activity);
 

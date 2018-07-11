@@ -32,16 +32,16 @@ public class Saru extends Mogura {
 
         imageView.setVisibility(View.VISIBLE);
 
-        setAnimator(context);
+        setAnimator(ac);
 
         setOnclick(ac);
 
     }
 
     @Override
-    protected void setAnimator(Context context){
+    protected void setAnimator(Activity activity){
 
-        AnimatorSet set = setAnimatorSet(context);
+        AnimatorSet set = setAnimatorSet(activity.getApplicationContext());
         set.setDuration(duration);
         set.setTarget(imageView);
         set.start();

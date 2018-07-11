@@ -1,5 +1,6 @@
 package com.test.mogura.Usagi;
 
+import android.app.Activity;
 import android.widget.ImageView;
 
 import com.test.mogura.MoguraFrame.Factory;

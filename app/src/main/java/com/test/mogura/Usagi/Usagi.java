@@ -1,15 +1,18 @@
 package com.test.mogura.Usagi;
 
 import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.test.mogura.MoguraParam;
 import com.test.mogura.MyUtils;
 import com.test.mogura.R;
 import com.test.mogura.Saru.Saru;
+
+import java.util.Random;
 
 public class Usagi extends Saru {
     protected int score;
@@ -25,47 +28,39 @@ public class Usagi extends Saru {
         this.duration = duration;
         this.IdDrawable = IdDrawable;
         this.IdAnimator = IdAnimator;
-        this.imageView = imageView;    }
+        this.imageView = imageView;
+    }
 
     @Override
     public void startMogura(final Activity ac, final ImageView iv){
         super.startMogura(ac, iv);
+//        MyUtils.addView((FrameLayout)imageView.getParent(), (View)ac.getLayoutInflater().inflate(R.layout.treasure, null));
+
     }
 
     @Override
-    protected void setOnclick(final Activity activity){
-        imageView.setOnClickListener(new View.OnClickListener() {
+    protected void setAnimator(final Activity activity){
+
+        AnimatorSet set = setAnimatorSet(activity.getApplicationContext());
+        set.setDuration(duration);
+        set.setTarget(imageView);
+        set.start();
+        set.addListener(new Animator.AnimatorListener() {
             @Override
-            public void onClick(View v) {
-                MyUtils.addScore(score);
-                MyUtils.setScore(activity);
-
-                v.setVisibility(View.GONE);
-                AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(activity.getApplicationContext(),
-                        R.animator.explode_anim);
-                final ImageView iv = activity.findViewById(MyUtils.idMap.get(v.getId()));
-
-                iv.setVisibility(View.VISIBLE);
-                set.setTarget(iv);
-                set.start();
-                set.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator anim){}
-                    @Override
-                    public void onAnimationEnd(Animator anim){
-                        iv.setVisibility(View.GONE);
-                    }
-                    @Override
-                    public void onAnimationCancel(Animator anim){}
-                    @Override
-                    public void onAnimationRepeat(Animator anim){}
-
-                });
+            public void onAnimationStart(Animator anim){}
+            @Override
+            public void onAnimationEnd(Animator anim){
+                imageView.setVisibility(View.GONE);
+                Random rand = new Random();
+                if( rand.nextInt(MoguraParam.usagiNinjinprobability) == 1)
+                    MyUtils.addView((FrameLayout)imageView.getParent(), (View)activity.getLayoutInflater().inflate(R.layout.treasure, null));
             }
+            @Override
+            public void onAnimationCancel(Animator anim){}
+            @Override
+            public void onAnimationRepeat(Animator anim){}
 
         });
     }
-
-
 
 }
