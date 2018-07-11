@@ -57,7 +57,7 @@ public class GameActivity extends AppCompatActivity {
 
             public void onTick(long millisUntilFinished) {
                 int bound = (int) millisUntilFinished/10;
-                if (bound <0) bound = -bound;  //bound はpositiveでないといけない。
+                if (bound <1) bound = 1;  //bound はpositiveでないといけない。
                 final int period = (int) rand.nextInt(bound);
                 MyUtils.setTime(gameActivity, millisUntilFinished/1000);
 
