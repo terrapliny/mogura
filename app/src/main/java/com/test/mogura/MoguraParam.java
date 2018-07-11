@@ -15,6 +15,6 @@ public final class MoguraParam {
     public static final int usagiDuration = 260;
     public static final int usagiIdDrawable = R.drawable.ic_usagi;
     public static final int usagiIdAnimator = R.animator.up_down_animator;
-    public static final int usagiNinjinProbability = 2;
-    public static final int usagiNinjinScore = 1;
+    public static final int usagiNinjinProbability = 6;
+    public static final int usagiNinjinScore = 25;
 }

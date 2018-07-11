@@ -41,13 +41,15 @@ public class Usagi extends Saru {
         mSet.setTarget(imageView);
         mSet.start();
         mSet.addListener(new Animator.AnimatorListener() {
+            boolean touchFlag = false;
+
             @Override
             public void onAnimationStart(Animator anim){}
             @Override
             public void onAnimationEnd(Animator anim){
                 imageView.setVisibility(View.GONE);
                 Random rand = new Random();
-                if( rand.nextInt(MoguraParam.usagiNinjinProbability) == 1){
+                if( rand.nextInt(MoguraParam.usagiNinjinProbability) == 0 && touchFlag == false){
                     final View v = (View)activity.getLayoutInflater().inflate(R.layout.treasure, null);
                     MyUtils.setNormalAnimator(activity, v, R.animator.up_animator);
                     MyUtils.addView((FrameLayout)imageView.getParent(), v);
@@ -57,7 +59,7 @@ public class Usagi extends Saru {
             }
             @Override
             public void onAnimationCancel(Animator anim){
-                MyUtils.showToast(activity.getApplicationContext(), "cansel");
+                touchFlag = true;
             }
             @Override
             public void onAnimationRepeat(Animator anim){}

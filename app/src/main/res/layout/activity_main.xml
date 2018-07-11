@@ -30,7 +30,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="0~950:素人\n950~1100:凡人\n1100~1150:玄人\n1150~1190:達人\n1200~:神"
+        android:text="0~1000:素人\n1000~1150:凡人\n1150~1250:玄人\n1250~1300:達人\n1300~:神"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

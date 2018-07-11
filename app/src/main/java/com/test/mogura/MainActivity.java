@@ -11,8 +11,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
+        
         setContentView(R.layout.activity_main);
         MyUtils.setFont(this, (TextView) findViewById(R.id.main_title), R.string.font_ksosyo);
         MyUtils.setFont(this, (TextView) findViewById(R.id.scoreTable), R.string.font_ksosyo);
