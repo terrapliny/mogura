@@ -2,7 +2,6 @@ package com.test.mogura.MoguraFrame;
 
 import android.animation.AnimatorSet;
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
@@ -12,6 +11,7 @@ public abstract class Mogura {
     protected int IdDrawable;
     protected int IdAnimator;
     protected ImageView imageView;
+    protected AnimatorSet mSet = null;
 
     public void stickImage(ImageView iv, Drawable d){
         Drawable image = d;
@@ -26,5 +26,4 @@ public abstract class Mogura {
 
     public abstract void startMogura(Activity activity, ImageView imageView);
 
-    protected abstract AnimatorSet setAnimatorSet(Context context);
 }

@@ -1,5 +1,8 @@
 package com.test.mogura;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -73,5 +76,45 @@ public class MyUtils {
         FrameLayout.LayoutParams lp1 = new FrameLayout.LayoutParams(-2, -2);
         lp1.gravity = Gravity.CENTER;
         layout.addView(v, layout.getChildCount(), lp1);
+    }
+
+    public static AnimatorSet setNormalAnimator(final Activity activity, final View view, int animId, int duration){
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(activity.getApplicationContext(), animId);
+        set.setDuration(duration);
+        set.setTarget(view);
+        set.start();
+        set.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator anim){}
+            @Override
+            public void onAnimationEnd(Animator anim){
+                view.setVisibility(View.GONE);
+            }
+            @Override
+            public void onAnimationCancel(Animator anim){}
+            @Override
+            public void onAnimationRepeat(Animator anim){}
+
+        });
+        return set;
+    }
+
+    public static void setNormalAnimator(Activity activity, final View view, int animId){
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(activity.getApplicationContext(), animId);
+        set.setTarget(view);
+        set.start();
+        set.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator anim){}
+            @Override
+            public void onAnimationEnd(Animator anim){
+                view.setVisibility(View.GONE);
+            }
+            @Override
+            public void onAnimationCancel(Animator anim){}
+            @Override
+            public void onAnimationRepeat(Animator anim){}
+
+        });
     }
 }
