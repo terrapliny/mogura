@@ -4,21 +4,21 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.test.mogura.MoguraFrame.Mogura;
 import com.test.mogura.MoguraParam;
 import com.test.mogura.MyUtils;
 import com.test.mogura.R;
-import com.test.mogura.Saru.Saru;
 
 import java.util.Random;
 
-public class Usagi extends Saru {
+public class Usagi extends Mogura {
 
     Usagi(int score, int duration, int IdDrawable, int IdAnimator, ImageView imageView){
-        super(score, duration, IdDrawable, IdAnimator, imageView);
         this.score = score;
         this.duration = duration;
         this.IdDrawable = IdDrawable;
@@ -28,8 +28,14 @@ public class Usagi extends Saru {
 
     @Override
     public void startMogura(final Activity ac, final ImageView iv){
-        super.startMogura(ac, iv);
-//        MyUtils.addView((FrameLayout)imageView.getParent(), (View)ac.getLayoutInflater().inflate(R.layout.treasure, null));
+        final Context context = ac.getApplicationContext();
+        stickImage(imageView, context.getDrawable(IdDrawable));
+
+        imageView.setVisibility(View.VISIBLE);
+
+        setAnimator(ac);
+
+        setOnclick(ac);
 
     }
 
@@ -63,6 +69,25 @@ public class Usagi extends Saru {
             }
             @Override
             public void onAnimationRepeat(Animator anim){}
+
+        });
+    }
+
+    @Override
+    protected void setOnclick(final Activity activity){
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyUtils.addScore(score);
+                MyUtils.setScore(activity);
+
+                View iv = (View)activity.getLayoutInflater().inflate(R.layout.cry, null);
+                MyUtils.addView((FrameLayout)imageView.getParent(), iv);
+
+                v.setVisibility(View.GONE);
+                MyUtils.setNormalAnimator(activity, iv, R.animator.explode_anim);
+                if(mSet != null) mSet.cancel();
+            }
 
         });
     }
