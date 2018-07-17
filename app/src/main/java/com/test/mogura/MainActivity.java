@@ -1,6 +1,8 @@
 package com.test.mogura;
 
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,9 +10,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //class変数にしておかないと、MediaPlayer finalized without being released
+    MediaPlayer mediaPlayer = new MediaPlayer();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        playMedia();
 
         setContentView(R.layout.activity_main);
         MyUtils.setFont(this, (TextView) findViewById(R.id.main_title), R.string.font_ksosyo);
@@ -40,25 +47,20 @@ public class MainActivity extends AppCompatActivity {
 //        soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1);
 
 
+    }
+
+
+    public void playMedia(){
         // assetsのファイルをオープン
-//        try {
-//            AssetFileDescriptor afdescripter = getAssets().openFd("game_maoudamashii_5_village08.mp3");
-//
-//// MediaPlayer のインスタンス生成
-//            MediaPlayer mediaPlayer = new MediaPlayer();
-//
-//// 音楽ファイルをmediaplayerに設定
-//            mediaPlayer.setDataSource(afdescripter.getFileDescriptor(),
-//                    afdescripter.getStartOffset(), afdescripter.getLength());
-//
-//// 再生準備、再生可能状態になるまでブロック
-//            mediaPlayer.prepare();
-//
-//// 再生開始
-//            mediaPlayer.start();
-//        }catch (Exception e){
-//
-//        }
+        try {
+            AssetFileDescriptor afdescripter = getAssets().openFd("game_maoudamashii_5_village08.mp3");
+            mediaPlayer.setDataSource(afdescripter.getFileDescriptor(),
+                    afdescripter.getStartOffset(), afdescripter.getLength());
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        }catch (Exception e){
+
+        }
     }
 
     public void onGameStart(View v){

@@ -41,7 +41,9 @@ public class MyUtils {
     }
 
     public static void addScore(int score){
-        totalScore += score;
+
+        if(GameActivity.feverTime == false) totalScore += score;
+        else totalScore += score*3;
     }
 
     public static int getScore(){

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.test.mogura.ItemSaru.ItemSaruFactory;
 import com.test.mogura.MoguraFrame.Factory;
 import com.test.mogura.MoguraFrame.Mogura;
 import com.test.mogura.Saru.RareSaruFactory;
@@ -20,9 +21,10 @@ public class GameActivity extends AppCompatActivity {
     final int stageTime = 31000;
     final int intervalTime = 250;
     final int randomIntervalTime = 1500;
-    final int rareProbability = 7;
+    final int rareProbability = 40;
     final Activity gameActivity = this;
 
+    public static boolean feverTime = false;
 
 
 
@@ -41,6 +43,9 @@ public class GameActivity extends AppCompatActivity {
                 findViewById(R.id.mogura_8),
                 findViewById(R.id.mogura_9)
         };
+
+
+
 //        FrameLayout frameLayout1 = findViewById(R.id.b);
 //
 //        View V1 = this.getLayoutInflater().inflate(R.layout.treasure, null);
@@ -68,8 +73,9 @@ public class GameActivity extends AppCompatActivity {
                         int loopCnt = 0;
                         while(true){
                             if(saru[pos].getVisibility() == View.GONE) {
-                                if(period%rareProbability == 0) startNewUsagi(saru[pos]);
-                                else if(period%rareProbability == 1) startNewRareSaru(saru[pos]);
+                                if(period%rareProbability < 8) startNewUsagi(saru[pos]);
+                                else if(period%rareProbability >= 8 && period%rareProbability <= 10) startNewRareSaru(saru[pos]);
+                                else if(period%rareProbability == 20) startNewItemSaru(saru[pos]);
                                 else startNewSaru(saru[pos]);
                                 break;
                             }else{
@@ -87,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
         }.start();
 
     }
+
 
     public void startNewSaru(ImageView iv){
         Factory saruFactory = new SaruFactory();
@@ -106,6 +113,11 @@ public class GameActivity extends AppCompatActivity {
         mogura.startMogura(this, iv);
     }
 
+    public void startNewItemSaru(ImageView iv){
+        Factory itemSaruFactory = new ItemSaruFactory();
+        Mogura mogura = itemSaruFactory.create(iv);
+        mogura.startMogura(this, iv);
+    }
 
     @Override
     public void onBackPressed() {

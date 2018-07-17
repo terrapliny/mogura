@@ -17,4 +17,11 @@ public final class MoguraParam {
     public static final int usagiIdAnimator = R.animator.up_down_animator;
     public static final int usagiNinjinProbability = 6;
     public static final int usagiNinjinScore = 25;
+
+    public static final int itemSaruScore = 20;
+    public static final int itemSaruDuration = 100;
+    public static final int itemSaruIdDrawable = R.drawable.ic_saru_item;
+    public static final int itemSaruIdAnimator = R.animator.up_down_animator;
+    public static final int itemSaruNinjinProbability = 1;
+    public static final int itemSaruNinjinScore = 25;
 }
